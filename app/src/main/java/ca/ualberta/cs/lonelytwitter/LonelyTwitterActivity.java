@@ -33,7 +33,16 @@ public class LonelyTwitterActivity extends Activity {
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
-
+		ImportantTweet tweet = new ImportantTweet("this is a tweet");
+		NormalTweet normalTweet = new NormalTweet("this is a normal tweet");
+		ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
+		tweetList.add(normalTweet);
+		tweetList.add(tweet);
+		try {
+			tweet.setText("this is an altered text message");
+		} catch (TweetTooLongException e) {
+			e.printStackTrace();
+		}
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
